@@ -1,0 +1,23 @@
+<div id="hero-background">
+
+    <h1 id="login-title">Move</h1>
+    <%= form_for(@user, url: {action: 'auth_local'}, html: { class: "card", role: "form", id: "login-form"}) do |f| %>
+        <div class="card-content">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Username / Email</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Password</label>
+                </div>
+                <div class="input-field col s12 center-align">
+                    <button class="waves-effect waves-teal btn-flat">Iniciar Sesion</button>
+                    <p id="register-text">¿No tienes una cuenta? <a href="">Registrarse</a></p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+</div>

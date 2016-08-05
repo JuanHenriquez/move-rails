@@ -1,0 +1,41 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "materialize/components/color";
+ $primary-color: color("blue-grey", "darken-4") !default;
+ @import 'materialize';
+
+ #hero-background {
+
+     background-image: url(hero1.jpg);
+     background-size: cover;
+     height: 100vh;
+
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+
+ #login-form {
+     width: 30%;
+     background-color: rgba(33,33,33,0.8);
+     color: #fff;
+ }
+
+ #register-text {
+     text-align: center;
+ }
