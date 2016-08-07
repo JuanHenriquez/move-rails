@@ -14,28 +14,49 @@
  *= require_self
  */
 
- @import "materialize/components/color";
- $primary-color: color("blue-grey", "darken-4") !default;
- @import 'materialize';
+@import "materialize/components/color";
 
- #hero-background {
+$primary-color: color("blue-grey", "darken-4") !default;
+$secondary-color: color("pink", "base") !default;
 
-     background-image: url(hero1.jpg);
-     background-size: cover;
-     height: 100vh;
 
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
- }
+$link-color: color("pink", "base") !default;
+$input-border-color: color("grey", "lighten-5") !default;
+$input-focus-color: #fff !default;
+@import 'materialize';
 
- #login-form {
-     width: 30%;
-     background-color: rgba(33,33,33,0.8);
-     color: #fff;
- }
+#btn-login {
+    color: #fff;
+    background-color: #E91E63;
+    padding: 10px 25px;
+    border: 0;
+    margin-bottom: 10px;
+}
 
- #register-text {
-     text-align: center;
- }
+#hero-background {
+
+    background-image: url(hero1.jpg);
+    background-size: cover;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-form {
+    width: 85%;
+    background-color: rgba(33,33,33,0.9);
+    color: #fff;
+}
+
+#login-title {
+    color: #fff;
+    font-weight: bolder;
+    text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+#register-text {
+    text-align: center;
+}
