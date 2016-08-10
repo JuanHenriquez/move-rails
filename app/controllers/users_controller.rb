@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     # GET - Show template to create a user.
     def new
+        @user = User.new
     end
 
     # POST - Create a user.
@@ -29,7 +30,21 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
+
     def auth_local
+        @user = User.find_by_name(params[:user][:name])
+
+        if (@user != nil)
+            if (@user.password == params[:user][:password])
+                redirect_to user_path(@user)
+            else
+                redirect_to root_path
+            end
+        else
+            redirect_to root_path
+        end
     end
+
+    
 
 end
