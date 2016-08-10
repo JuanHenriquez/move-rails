@@ -1,3 +1,60 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#btn-login {
+    color: #fff;
+    background-color: #E91E63;
+    padding: 10px 25px;
+    border: 0;
+    margin-bottom: 10px;
+}
+
+#hero-background,
+#hero-background-register {
+    background-image: url(hero1.jpg);
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero-background {
+    height: 100vh;
+}
+
+#login-form {
+    width: 85%;
+    background-color: rgba(33,33,33,0.9);
+    color: #fff;
+}
+
+#login-title {
+    color: #fff;
+    font-weight: bolder;
+    text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+#register-text {
+    text-align: center;
+}
+
+@media (min-width: 550px) {
+    #login-form {
+        width: 60%;
+    }
+}
+
+@media (min-width: 900px) {
+    #login-form {
+        width: 45%;
+    }
+}
+
+@media (min-width: 1200px) {
+    #login-form {
+        width: 30%;
+    }
+}
