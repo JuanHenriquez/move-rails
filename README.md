@@ -1,24 +1,5 @@
-# README
+# Move - The social network that moves you around the world.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Esquema de la base de datos.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Usuario:
