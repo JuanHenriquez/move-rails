@@ -1,0 +1,39 @@
+<div id="hero-background-register">
+
+    <h1 id="login-title">Move</h1>
+    <%= form_for(@user, url: {action: 'auth_local'}, html: { class: "card", role: "form", id: "login-form"}) do |f| %>
+        <div class="card-content">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="picture" type="text" class="validate">
+                    <label for="picture">Picture</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="name" type="text" class="validate">
+                    <label for="name">Name</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="email" type="text" class="validate">
+                    <label for="emial">Email</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="country" type="text" class="validate">
+                    <label for="country">Country</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Password</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="tel" type="text" class="validate">
+                    <label for="tel">Telephone</label>
+                </div>
+                <div class="input-field col s12 center-align">
+                    <button class="waves-effect" id="btn-login">Registrarse</button>
+                    <p id="register-text">¿Ya tienes una cuenta? <%= link_to "Inicia sesión con tu cuenta", root_path %></p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+</div>
