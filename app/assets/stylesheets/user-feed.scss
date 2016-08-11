@@ -1,0 +1,42 @@
+@import "materialize/components/color";
+
+$primary-color: color("blue-grey", "darken-4") !default;
+$secondary-color: color("pink", "base") !default;
+
+
+$link-color: color("pink", "base") !default;
+$input-border-color: color("grey", "lighten-5") !default;
+$input-focus-color: #fff !default;
+@import 'materialize';
+
+header, main, footer {
+    padding-left: 300px;
+}
+
+.userView {
+
+    & .background {
+        width: 100%;
+        height: 100%;
+    }
+
+}
+
+.side-nav.fixed {
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.16), 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+    & .subheader {
+        color: rgba(0, 0, 0, 0.54)!important;
+    }
+
+    & .secondary-item  {
+        padding: 0 16px 0 35px;
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+}
