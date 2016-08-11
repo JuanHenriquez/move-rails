@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+    # User a special layout for the user feed.
+    layout "user-feed", :only => [:show]
+
     # GET - Show a user.
     def show
         @user = User.find(params[:id])
@@ -13,7 +16,7 @@ class UsersController < ApplicationController
     # POST - Create a user.
     def create
         @user = User.new(user_params)
-        
+
         if @user.save
             flash[:success] = "Welcome to move #{user_params[:name]}"
             redirect_to user_path(@user)
@@ -54,14 +57,11 @@ class UsersController < ApplicationController
             flash[:error] = "This user doesn't exists."
             redirect_to root_path
         end
-        
+
     end
-    
+
     private
     def user_params
         params.require(:user).permit(:name, :password, :email, :tel, :country, :user_picture)
     end
-
-    
-
 end
