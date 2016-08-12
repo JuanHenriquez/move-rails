@@ -21,4 +21,4 @@
 .byebug_history
 
 # Igonore user pictures
-public/system/
+/public/system/*
