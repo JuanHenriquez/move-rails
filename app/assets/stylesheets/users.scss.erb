@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/= depend_on_asset "hero1.jpg"
 #btn-login {
     color: #fff;
     background-color: #E91E63;
@@ -13,7 +14,7 @@
 #hero-background,
 #hero-background-register {
     // Cambio.
-    background-image: url(<%= asset_path('hero1.jpg') %>);
+    background-image: url('<%= asset_path('hero1.jpg') %>');
     background-size: cover;
 
     display: flex;
