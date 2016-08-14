@@ -13,8 +13,19 @@ header, main, footer {
     padding-left: 300px;
 }
 
+
+// =========================
+// Main Components
+// =========================
+
+// NAVBAR LEFT.
+//=================
+
+// Here go the information(Picture, name and email) about the user perfil.
+// Is locate in the navbar-left.
 .userView {
 
+    // background overlay for the container.
     & .background {
         width: 100%;
         height: 100%;
@@ -22,21 +33,126 @@ header, main, footer {
 
 }
 
+// .side-nav is the navbar left wrapper.
 .side-nav.fixed {
+    // Custom shadow.
     box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.16), 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
+    // subheader for the list of links.
     & .subheader {
         color: rgba(0, 0, 0, 0.54)!important;
     }
 
+    // Al the secondary links.
     & .secondary-item  {
         padding: 0 16px 0 35px;
     }
 
 }
 
+// TOOLBAR.
+// ===================
+
+nav {
+    width: calc(100vw - 300px);
+}
+
+.nav-wrapper {
+    padding-left: 30px;
+    display: flex;
+    justify-content: flex-end;
+
+    & .brand-logo {
+        position: relative;
+        margin-right: 20px;
+    }
+
+    & form {
+        flex-grow: 2;
+    }
+
+}
+
+// =========================
+// SECTION: FEED
+// =========================
+
+.top-header {
+    background-image: url("feed-bg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & h3 {
+        margin: 0;
+        color: #fff;
+        font-size: 5em;
+        font-weight: bolder;
+    }
+
+    & .card-search {
+        height: 40px;
+        width: 65%;
+        padding: 10px;
+        margin-top: 50px;
+    }
+}
+
+// Main content of the feed page.
+.feed-body {
+
+    .post-header {
+        padding: 5px 10px;
+        display: flex;
+    }
+
+    .post-header  img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .post-info {
+        padding: 5px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h5 { font-size: 1em; margin: 0; }
+
+        h6 { font-size: 0.7em; }
+
+    }
+
+}
+
 @media only screen and (max-width: 992px) {
+
+    nav {
+        width: 100%;
+    }
+
     header, main, footer {
         padding-left: 0;
+    }
+
+    // TOOLBAR.
+    .nav-wrapper {
+        & .brand-logo {
+            text-align: center;
+            flex-grow: 2;
+            left: 0;
+            transform: none;
+
+        }
+
+        & form {
+            display: none;
+        }
+
     }
 }
