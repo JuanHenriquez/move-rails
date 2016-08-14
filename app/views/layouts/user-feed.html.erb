@@ -1,35 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MoveRails</title>
-    <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <%= stylesheet_link_tag    'user-feed', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'user-feed', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <head>
+        <title>MoveRails</title>
+        <%= csrf_meta_tags %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <%= stylesheet_link_tag    'user-feed', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'user-feed', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <ul id="slide-out" class="side-nav fixed">
-        <li>
-            <div class="userView">
-                <%= image_tag 'perfil-bg.png', class: 'background'%>
-                <a href="#!user"><%= image_tag @user.user_picture.url(:thumb), class: 'circle' %></a>
-                <a href="#!name"><span class="white-text name"><%= @user.name %></span></a>
-                <a href="#!email"><span class="white-text email"><%= @user.email %></span></a>
-            </div>
-        </li>
-        <li><a href="#!" class="waves-effect"><i class="material-icons">cloud</i>Feed</a></li>
-        <li><a href="#!" class="waves-effect"><i class="material-icons">people</i>Friends</a></li>
-        <li><a href="#!" class="waves-effect"><i class="material-icons">dashboard</i>Dashboard</a></li>
-        <li><a href="#!" class="waves-effect"><i class="material-icons">account_circle</i>My Account</a></li>
-        <li><a href="#!" class="waves-effect"><i class="material-icons">pages</i>My Pages</a></li>
-        <li><div class="divider"></div></li>
-        <li><a class="subheader">Management</a></li>
-        <li><a class="waves-effect secondary-item" href="#!"><i class="material-icons">settings</i>Configuration</a></li>
-        <li><a class="waves-effect secondary-item" href="#!"><i class="material-icons">exit_to_app</i>Log Out</a></li>
-        <li><a class="waves-effect secondary-item" href="#!"><i class="material-icons">book</i>Documentation</a></li>
-    </ul>
-    <%= yield %>
-  </body>
+    <body>
+        <%= render "layouts/navbar-left" %>
+        <%= render "layouts/toolbar" %>
+        <%= yield %>
+        <%= render "layouts/footer" %>
+    </body>
 </html>
