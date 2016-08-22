@@ -1,0 +1,21 @@
+{
+  "name": "move-rails",
+  "homepage": "https://github.com/juanhenriquez/move-rails",
+  "authors": [
+    "Juan Henriquez <juanhenriquezzavarse18@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "^1.0.26"
+  }
+}
