@@ -2,9 +2,9 @@
     <li>
         <div class="userView">
             <%= image_tag 'perfil-bg.png', class: 'background'%>
-            <a href="#!user"><%= image_tag @user.user_picture.url(:thumb), class: 'circle' %></a>
+            <a href="#!user"><%= image_tag (@user.avatar == nil) ? @user.avatar.url(:thumb) : gravatar_for(@user, size: 1000), class: 'circle' %></a>
             <a href="#!name">
-                <span class="white-text name"><%= @user.name %></span>
+                <span class="white-text name"><%= @user.first_name %></span>
             </a>
             <a href="#!email">
                 <span class="white-text email"><%= @user.email %></span>
@@ -54,10 +54,10 @@
         </a>
     </li>
     <li>
-        <a class="waves-effect secondary-item" href="#!">
+        <%= link_to(destroy_user_session_path, method: :delete, class: "waves-effect secondary-item") do %>
             <i class="material-icons">exit_to_app</i>
             Log Out
-        </a>
+        <% end %>
     </li>
     <li>
         <a class="waves-effect secondary-item" href="#!">
