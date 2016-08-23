@@ -10,22 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810225018) do
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password"
-    t.string   "country"
-    t.string   "tel"
-    t.string   "user_picture"
-    t.boolean  "status"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "user_picture_file_name"
-    t.string   "user_picture_content_type"
-    t.integer  "user_picture_file_size"
-    t.datetime "user_picture_updated_at"
-  end
+ActiveRecord::Schema.define(version: 20160823053040) do
 
 end
