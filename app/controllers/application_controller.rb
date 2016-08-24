@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
         # your_path
         new_user_session_path
     end
+
+    def after_update_path_for(resource)
+        user_path(resource)
+    end
+
 end
