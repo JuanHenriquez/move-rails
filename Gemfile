@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.2'
 # MaterializeCSS for Rails.
 gem 'materialize-sass'
 
+gem 'devise'
+
 # Paperclip for upload images.
 gem "paperclip", "~> 5.0.0"
 

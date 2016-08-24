@@ -13,6 +13,14 @@ header, main, footer {
     padding-left: 300px;
 }
 
+.danger {
+    color: #f44336!important;
+}
+
+.danger-btn {
+    color: #fff;
+    background-color: #f44336!important;
+}
 
 // =========================
 // Main Components
@@ -128,6 +136,59 @@ nav {
 
     }
 
+}
+
+// ===============================
+// SECTION: Account - Edit Account
+// ===============================
+
+#edit-user-page {
+    background-color: #212121;
+    padding: 30px 5px;
+
+    & #edit-form {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    & #edit-form .input-field input {
+        border-bottom-color: #000;
+    }
+
+    & #edit-form .input-field label {
+        color: #000;
+    }
+
+    & #file-image-title {
+        position: absolute;
+        bottom: 55px;
+    }
+    & .file-field .btn-floating.btn-large {
+        height: 55.5px;
+    }
+}
+
+#edit-user-page-title {
+    color: #fff;
+    font-weight: bolder;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-card-title {
+    text-align: center;
+    font-weight: 300;
+    color: #E91E63;
+    margin-bottom: 35px;
+}
+
+.input-field__text input {
+    margin-bottom: 5px;
+}
+
+.input-field__text em {
+    color: #757575;
 }
 
 @media only screen and (max-width: 992px) {

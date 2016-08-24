@@ -2,9 +2,9 @@
     <li>
         <div class="userView">
             <%= image_tag 'perfil-bg.png', class: 'background'%>
-            <a href="#!user"><%= image_tag @user.user_picture.url(:thumb), class: 'circle' %></a>
+            <a href="#!user"><%= image_tag (@user.avatar.file?) ? @user.avatar.url(:thumb) : gravatar_for(@user, size: 1000), class: 'circle' %></a>
             <a href="#!name">
-                <span class="white-text name"><%= @user.name %></span>
+                <span class="white-text name"><%= @user.first_name %></span>
             </a>
             <a href="#!email">
                 <span class="white-text email"><%= @user.email %></span>
@@ -12,10 +12,10 @@
         </div>
     </li>
     <li>
-        <a href="#!" class="waves-effect">
+        <%= link_to(user_path(@user), class: "waves-effect") do %>
             <i class="material-icons">cloud</i>
             Feed
-        </a>
+        <% end %>
     </li>
     <li>
         <a href="#!" class="waves-effect">
@@ -29,11 +29,23 @@
             Dashboard
         </a>
     </li>
-    <li>
-        <a href="#!" class="waves-effect">
-            <i class="material-icons">account_circle</i>
-            My Account
-        </a>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header waves-effect">My Account<i class="material-icons">account_circle</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <%= link_to(edit_user_registration_path, class: "waves-effect secondary-item") do %>
+                                <i class="material-icons">settings</i>
+                                Edit Account
+                            <% end %>
+                        </li>
+                        <li><a href="#!">Change Password</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </li>
     <li>
         <a href="#!" class="waves-effect">
@@ -48,16 +60,16 @@
         <a class="subheader">Management</a>
     </li>
     <li>
-        <a class="waves-effect secondary-item" href="#!">
+        <%= link_to(edit_user_registration_path, class: "waves-effect secondary-item") do %>
             <i class="material-icons">settings</i>
-            Configuration
-        </a>
+            Edit Account
+        <% end %>
     </li>
     <li>
-        <a class="waves-effect secondary-item" href="#!">
+        <%= link_to(destroy_user_session_path, method: :delete, class: "waves-effect secondary-item") do %>
             <i class="material-icons">exit_to_app</i>
             Log Out
-        </a>
+        <% end %>
     </li>
     <li>
         <a class="waves-effect secondary-item" href="#!">

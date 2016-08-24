@@ -1,0 +1,114 @@
+<div id="edit-user-page">
+    <div class="container">
+
+        <h1 id="edit-user-page-title">Editar Cuenta</h1>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+        html: { role: "form", id: "edit-form", multipart: true }) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4 class="form-card-title">Datos Generales</h4>
+                        </div>
+
+                        <div class="file-field input-field">
+                            <div class="btn btn-floating waves-effect btn-large">
+                                <span><i class="material-icons">file_upload</i></span>
+                                <%= f.file_field :avatar %>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <span id="file-image-title">Subir imagen</span>
+                                <input class="file-path validate" type="text" placeholder="Subir imagen ">
+                            </div>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <%= f.text_field :first_name, class:"validate active", autofocus: true %>
+                            <%= label_tag(:first_name, "Nombre") %>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <%= f.text_field :last_name, class:"validate" %>
+                            <%= label_tag(:last_name, "Apellido", class: "active") %>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <%= f.number_field :age, class:"validate" %>
+                            <%= label_tag(:age, "Edad", class: "active") %>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <%= f.text_field :country, class:"validate" %>
+                            <%= label_tag(:country, "Pais", class: "active") %>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <%= f.email_field :email, class:"validate"%>
+                            <%= f.label :email, class: "active" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4 class="form-card-title">Actualizar Contraseña</h4>
+                        </div>
+
+                        <div class="input-field input-field__text col s12">
+                            <%= f.password_field :password, class: "validate", autocomplete: "off" %>
+                            <%= f.label :password, "Password <small>(Dejalo en blanco si no quieres cambiarlo)</small>".html_safe %>
+                            <% if @minimum_password_length %>
+                                <em><%= @minimum_password_length %> caracteres minimo</em>
+                            <% end %>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <%= f.password_field :password_confirmation, class:"validate", autocomplete: "off" %>
+                            <%= f.label :password_confirmation, "Confirmar Contraseña" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4 class="form-card-title"><strong>Confirmar Cambios</strong></h4>
+                        </div>
+
+                        <div class="input-field input-field__text col s12">
+                            <%= f.password_field :current_password, class: "validate", autocomplete: "off" %>
+                            <%= f.label :current_password %>
+                            <em>(Necesitamos tu actual contraseña para confirmar tus cambios)</em>
+                        </div>
+
+                        <div class="input-field col s12 center-align">
+                            <%= f.submit "Actualizar Cuenta",
+                            class: "waves-effect btn",
+                            id: "btn-login" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <h4 class="form-card-title danger"><strong>Cancelar Cuenta</strong></h4>
+                    </div>
+                    <div class="col s12 center-align">
+                        <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete, class: "btn danger-btn waves-effect" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

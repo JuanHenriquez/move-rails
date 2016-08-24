@@ -5,4 +5,5 @@
 
 $(document).on('turbolinks:load', function (){
     $(".button-collapse").sideNav();
+    $('.collapsible-accordion').collapsible();
 });
