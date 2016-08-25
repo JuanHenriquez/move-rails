@@ -17,7 +17,17 @@ gem 'coffee-rails', '~> 4.2'
 # MaterializeCSS for Rails.
 gem 'materialize-sass'
 
+gem 'bootstrap', '~> 4.0.0.alpha3.1'
+
+gem 'material_design_lite-rails', '~> 1.2'
+
 gem 'devise'
+
+gem 'mailboxer'
+
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'will_paginate-materialize'
 
 # Paperclip for upload images.
 gem "paperclip", "~> 5.0.0"

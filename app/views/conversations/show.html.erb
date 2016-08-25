@@ -1,0 +1,49 @@
+<div id="conversations-page">
+
+        <div class="row">
+
+            <div class="col s12 m6 offset-m3 l5 push-l7">
+                <div id="friend-container">
+                    <div class="mdl-card mdl-shadow--2dp" id="friend-card">
+                        <div class="mdl-card__header-bg">
+                            <%= display_avatar(@friend, size: 1000, type: :large) %>
+                        </div>
+                        <h5 class="center-align"><%= @friend.name %></h5>
+                        <%= link_to "#{@friend.first_name}'s profile", user_path(@friend),  class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 l7 pull-l5">
+                <div class="row scrollspy">
+                    <% @conversation.receipts_for(current_user).each do |receipt| %>
+                        <div class="col s12">
+                            <div class='mdl-card mdl-shadow--2dp card-message card-<%= "#{ receipt.mailbox_type }" %>'>
+                                <div class="mdl-card__padding">
+                                    <div class="card-message__header">
+                                        <%= display_avatar(receipt.message.sender, size: 200, type: :thumb) %>
+                                        <div class="card-message__header-info">
+                                            <h5><strong><%= receipt.message.sender.name %></strong></h5>
+                                            <p><%= receipt.message.body %></p>
+                                        </div>
+                                    </div>
+                                    <div class="card-message__date">
+                                        <p><small><%= time_ago_in_words(receipt.message.created_at) %> ago</small></p>
+                                    </div>
+                                    <div class="card-message__actions"></div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+</div>
+
+<%= form_tag user_conversation_messages_path(current_user, @conversation), method: :post do %>
+    <div class="">
+        <%= text_area_tag :body %>
+    </div>
+    <%= submit_tag %>
+<% end %>

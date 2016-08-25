@@ -1,0 +1,11 @@
+<li class="collection-item avatar">
+    <% conversation.participants.each do |participant| %>
+        <% unless participant == current_user %>
+            <%= display_avatar(participant, size: 1000, type: :thumb) %>
+            <span class="title"><%= participant.name %></span>
+            <p><span class="last-message-title">Ultimo mensaje: </span> <%= conversation.last_message.body %></p>
+            <p><small>Ultima actualización: <%= time_ago_in_words(conversation.last_message.updated_at) %> ago</small></p>
+            <%= link_to "Ver", user_conversation_path(current_user, conversation), class: "secondary-content btn btn-default waves-effect" %>
+        <% end %>
+    <% end %>
+</li>

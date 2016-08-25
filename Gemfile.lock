@@ -39,9 +39,20 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.1)
+    autoprefixer-rails (6.4.0.2)
+      execjs
     bcrypt (3.1.11)
+    bootstrap (4.0.0.alpha3.1)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
     builder (3.2.2)
     byebug (9.0.5)
+    carrierwave (0.11.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+      mimemagic (>= 0.3.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -74,6 +85,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    json (2.0.2)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -81,6 +93,11 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    mailboxer (0.14.0)
+      carrierwave (>= 0.5.8)
+      rails (>= 4.2.0)
+    material_design_lite-rails (1.2.0)
+      railties (>= 3.1)
     materialize-sass (0.97.7)
       sass (~> 3.3)
     method_source (0.8.2)
@@ -181,17 +198,22 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    will_paginate (3.1.0)
+    will_paginate-materialize (0.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap (~> 4.0.0.alpha3.1)
   byebug
   coffee-rails (~> 4.2)
   devise
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  mailboxer
+  material_design_lite-rails (~> 1.2)
   materialize-sass
   paperclip (~> 5.0.0)
   pg
@@ -206,6 +228,8 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console
+  will_paginate (~> 3.1.0)
+  will_paginate-materialize
 
 BUNDLED WITH
    1.12.5
