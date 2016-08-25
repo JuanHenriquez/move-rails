@@ -7,4 +7,16 @@ module UsersHelper
         gravatar_id = Digest::MD5::hexdigest(userEmail)
         gravatar_url = "https://www.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     end
+
+    def display_avatar(user, options = { size: 200, type: nil, title: user.name})
+        if user.avatar.file? == true
+            image_tag(user.avatar.url(options[:type]), class: "circle avatar-pic")
+        else
+            userEmail = user[:email].strip.downcase
+            size = options[:size]
+            gravatar_id = Digest::MD5::hexdigest(userEmail)
+            gravatar_url = "https://www.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+            image_tag(gravatar_url, class: "circle avatar-pic")
+        end
+    end
 end
