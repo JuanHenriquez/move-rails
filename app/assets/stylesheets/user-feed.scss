@@ -1,3 +1,15 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+@import "bootstrap/grid";
+@import "bootstrap/buttons";
+@import "bootstrap/animation";
+@import "bootstrap/card";
+@import "bootstrap/alert";
+@import "bootstrap/close";
+@import "bootstrap/utilities";
+@import "bootstrap/images";
+
 @import "materialize/components/color";
 
 $primary-color: color("blue-grey", "darken-4") !default;
@@ -8,9 +20,15 @@ $link-color: color("pink", "base") !default;
 $input-border-color: color("grey", "lighten-5") !default;
 $input-focus-color: #fff !default;
 @import 'materialize';
+@import "material";
 
 header, main, footer {
     padding-left: 300px;
+}
+
+.avatar-pic {
+    max-width: 100px;
+    max-height: 1000px;
 }
 
 .danger {
@@ -20,6 +38,12 @@ header, main, footer {
 .danger-btn {
     color: #fff;
     background-color: #f44336!important;
+}
+
+.mdl-card__padding {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
 }
 
 // =========================
@@ -189,6 +213,109 @@ nav {
 
 .input-field__text em {
     color: #757575;
+}
+
+// ===============================
+// SECTION: Conversations
+// ===============================
+
+#conversations-page {
+    background-color: #eceff1;
+    padding: 35px 0;
+    height: 100%;
+
+    & .avatar-pic {
+        width: 50px;
+        height: 50px;
+    }
+
+    & .collection-item .last-message-title{
+        font-weight: bolder;
+    }
+
+    & .collection .collection-item.avatar .secondary-content {
+        top: 50%;
+        margin-top: -18px;
+    }
+}
+
+#friend-container {
+    position: relative;
+    margin: 5px;
+    height: 100%;
+
+    & #friend-card {
+        top: 0;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        position: relative;
+
+        & .avatar-pic {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: 50%;
+            margin-left: -40px;
+            bottom: -40px;
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5)
+        }
+
+        & h5 {
+            margin-top: 50px;
+        }
+
+    }
+
+    & .mdl-card__header-bg {
+        background-image: url('feed-bg');
+        background-size: cover;
+        height: 140px;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+        position: relative;
+    }
+
+}
+
+.card-message {
+    width: 70%;
+    min-height: 70px;
+    height: auto;
+
+    & .card-message__header {
+        display: flex;
+
+        & .card-message__header-info {
+            margin-left: 10px;
+        }
+
+        & h5 {
+            margin: 0;
+            font-size: 1em;
+        }
+
+    }
+
+    & .card-message__date p {
+        margin: 0;
+        position: relative;
+        float: right;
+    }
+
+}
+
+.col + .col .card-message {
+    margin-top: 15px;
+}
+
+.card-inbox {
+    position: relative;
+    left: 0;
+}
+
+.card-sentbox {
+    position: relative;
+    float: right;
 }
 
 @media only screen and (max-width: 992px) {
