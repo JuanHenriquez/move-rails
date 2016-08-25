@@ -13,6 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require materialize-sprockets
+//= require bootstrap-sprockets
+//= require material
 //= require vue/dist/vue.min
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener('turbolinks:load', function() {
+  componentHandler.upgradeDom();
+});
+
+document.addEventListener('page:change', function() {
+  componentHandler.upgradeDom();
+});
