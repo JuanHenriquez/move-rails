@@ -8,6 +8,11 @@ Rails.application.routes.draw do
         resources :conversations do
             resources :messages
         end
+
+        resources :friends, :except => ['destroy']
+
+        delete "friends", to: "friends#destroy", as: "friends_delete"
+        get "friends_pending", to: "friends#pending"
     end
 
     devise_scope :user do

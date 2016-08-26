@@ -10,4 +10,5 @@ $(document).on('turbolinks:load', function (){
     $('.collapsible-accordion').collapsible();
     $('.scrollspy').scrollSpy();
     $(".alert").alert()
+    $('.parallax').parallax();
 });

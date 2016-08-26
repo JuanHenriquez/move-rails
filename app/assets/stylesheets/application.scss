@@ -22,4 +22,5 @@ $input-border-color: color("grey", "lighten-5") !default;
 $input-focus-color: #fff !default;
 @import 'materialize';
 
+@import "users";
 @import "user-feed";

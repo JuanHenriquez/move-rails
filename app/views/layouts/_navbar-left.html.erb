@@ -17,11 +17,28 @@
             Feed
         <% end %>
     </li>
-    <li>
-        <a href="#!" class="waves-effect">
-            <i class="material-icons">people</i>
-            Friends
-        </a>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header waves-effect">Friends<i class="material-icons">people</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <%= link_to(user_friends_path(current_user), class: "waves-effect secondary-item") do %>
+                                <i class="material-icons">tag_faces</i>
+                                Your Friends
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to(user_friends_pending_path(current_user), class: "waves-effect secondary-item") do %>
+                                <i class="material-icons">notifications</i>
+                                Friends Requests
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </li>
     <li>
         <%= link_to(user_dashboard_path(current_user), class: "waves-effect") do %>

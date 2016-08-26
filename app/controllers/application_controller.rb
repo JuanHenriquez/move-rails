@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
         redirect_back_or root_path
     end
 
+    private
+
     def redirect_back_or(path)
         redirect_to request.referer || path
     end
@@ -24,6 +26,17 @@ class ApplicationController < ActionController::Base
 
     def after_update_path_for(resource)
         user_dashboard_path(current_user)
+    end
+
+    def set_user
+        @user = User.find(params[:id])
+    end
+
+    def user_owner
+        if current_user != @user
+            flash[:danger] = "You don't have permissions to do that."
+            redirect_to user_dashboard_path(current_user)
+        end
     end
 
 end
