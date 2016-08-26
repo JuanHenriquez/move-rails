@@ -15,18 +15,4 @@ class UsersController < ApplicationController
 
     end
 
-    private
-
-
-    def set_user
-        @user = User.find(params[:id])
-    end
-
-    def user_owner
-        if current_user != @user
-            flash[:danger] = "You don't have permissions to do that."
-            redirect_to user_dashboard_path(current_user)
-        end
-    end
-
 end
