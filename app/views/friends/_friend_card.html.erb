@@ -1,0 +1,14 @@
+<div class="col s12 m6 l4">
+    <div class="mdl-card friend-card mdl-shadow--2dp">
+        <div class="mdl-card__header-bg">
+            <h6><%= friend.name %></h6>
+            <%= display_avatar(friend, size: 1000, type: :large) %>
+        </div>
+        <div class="mdl-card__bottom">
+            <%= link_to "Unfriend", user_friends_delete_path(current_user, friend_id: friend.id),
+                action: "destroy",
+                method: :delete, data: { confirm: "Are you sure?" },
+                class: "btn waves-effect btn-light" %>
+        </div>
+    </div>
+</div>

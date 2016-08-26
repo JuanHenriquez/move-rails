@@ -1,0 +1,5 @@
+<li class="collection-item avatar">
+    <%= display_avatar(person, size: 1000, type: :thumb) %>
+    <span class="title"><%= person.name %></span>
+    <%= link_to "Accept", user_friends_path(current_user, friend_id: person.id), method: :post, class: "btn waves-effect btn-light" %>
+</li>
