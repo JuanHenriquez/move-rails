@@ -46,6 +46,22 @@ header, main, footer {
     flex-direction: column;
 }
 
+.parallax-container {
+    position: relative;
+}
+
+.parallax-title__container {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 // =========================
 // Main Components
 // =========================
@@ -316,6 +332,66 @@ nav {
 .card-sentbox {
     position: relative;
     float: right;
+}
+
+// ===============================
+// SECTION: Friends.
+// ===============================
+
+#friends-page .parallax-container {
+    height: 300px;
+
+    & img {
+        width: 1000px;
+    }
+
+    & h1 {
+        font-weight: bolder;
+        color: #fff;
+        text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.6);
+    }
+
+}
+
+#friends-page #page-title {
+    font-weight: 300;
+    font-size: 1.8em;
+}
+
+#friends-page {
+
+    & .friend-card {
+        width: 100%;
+        min-height: 0;
+        height: auto;
+
+        & .mdl-card__header-bg {
+            background-image: url('card-picture-1');
+            background-size: cover;
+            width: 100%;
+            height: 120px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 45px
+        }
+
+        & .mdl-card__header-bg h6 {
+            font-weight: bolder;
+        }
+
+        & .mdl-card__header-bg img {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            left: 50%;
+            margin-left: -30px;
+            bottom: -30px;
+        }
+
+    }
+
 }
 
 @media only screen and (max-width: 992px) {
