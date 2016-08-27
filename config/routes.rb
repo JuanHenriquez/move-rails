@@ -12,7 +12,9 @@ Rails.application.routes.draw do
         resources :friends, :except => ['destroy']
 
         delete "friends", to: "friends#destroy", as: "friends_delete"
+        post "friends_request", to: "friends#send_request"
         get "friends_pending", to: "friends#pending"
+        get "friends_search", to: "friends#search"
     end
 
     devise_scope :user do
