@@ -46,6 +46,12 @@ header, main, footer {
     flex-direction: column;
 }
 
+.page-title {
+    font-weight: 300;
+    text-align: center;
+    font-size: 3em;
+}
+
 .parallax-container {
     position: relative;
 }
@@ -353,45 +359,40 @@ nav {
 
 }
 
-#friends-page #page-title {
+#friends-page .page-title {
     font-weight: 300;
     font-size: 1.8em;
 }
 
-#friends-page {
+.friend-card {
+    width: 100%;
+    min-height: 0;
+    height: auto;
 
-    & .friend-card {
+    & .mdl-card__header-bg {
+        background-image: url('card-picture-1');
+        background-size: cover;
         width: 100%;
-        min-height: 0;
-        height: auto;
-
-        & .mdl-card__header-bg {
-            background-image: url('card-picture-1');
-            background-size: cover;
-            width: 100%;
-            height: 120px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 45px
-        }
-
-        & .mdl-card__header-bg h6 {
-            font-weight: bolder;
-        }
-
-        & .mdl-card__header-bg img {
-            width: 60px;
-            height: 60px;
-            position: absolute;
-            left: 50%;
-            margin-left: -30px;
-            bottom: -30px;
-        }
-
+        height: 120px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 45px
     }
 
+    & .mdl-card__header-bg h6 {
+        font-weight: bolder;
+    }
+
+    & .mdl-card__header-bg img {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: 50%;
+        margin-left: -30px;
+        bottom: -30px;
+    }
 }
 
 @media only screen and (max-width: 992px) {

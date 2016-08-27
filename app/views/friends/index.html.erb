@@ -1,5 +1,5 @@
 <div id="friends-page">
-    
+
     <div class="parallax-container">
         <div class="parallax">
             <%= image_tag("friends-page") %>
@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h3 class="center-align" id="page-title">You have <%= @friends.count %> friends</h3>
+                <h3 class="center-align page-title">You have <%= @friends.count %> friends</h3>
             </div>
             <%= render partial: 'friend_card', collection: @friends, as: :friend %>
         </div>
