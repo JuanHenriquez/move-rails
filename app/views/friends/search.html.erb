@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h3 class="centera-lign page-title">Search Results: <%= @results.count %></h3>
+        </div>
+    </div>
+    <div class="row">
+        <%= render partial: "friend_card", collection: @results, as: :friend %>
+    </div>
+</div>
