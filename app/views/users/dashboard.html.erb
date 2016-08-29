@@ -1,1 +1,40 @@
-hola
+<div id="dashboard-page">
+
+    <div class="parallax-container">
+
+        <div class="parallax">
+            <%= image_tag("friends-page") %>
+        </div>
+
+        <div class="bg-overlay">
+            <div class="parallax-perfil__container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m2">
+                            <%= display_avatar(@user, size: 1000, type: :large) %>
+                        </div>
+                        <div class="col s12 m7">
+                            <h4 class="info-name"><%= @user.name %></h4>
+                            <h5 class="info-email"><%= @user.email %></h5>
+                            <% status = (@user.status) ? "Online" : "Offline" %>
+                            <div class='chip info-status <%= "#{ status.downcase }" %>'>
+                                <%= status %>
+                            </div>
+                        </div>
+                        <div class="col s12 m3">
+                            <%= link_to "Unfriend", user_friends_delete_path(current_user, friend_id: @user.id),
+                                action: "destroy",
+                                method: :delete, data: { confirm: "Are you sure?" },
+                                class: "btn waves-effect btn-light red darken-1" %>
+                            <%= link_to "Send a Message", user_conversations_path(friend_id: @user.id),
+                                method: :post,
+                                class: "btn waves-effect btn-light indigo darken-4" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

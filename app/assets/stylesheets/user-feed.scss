@@ -31,6 +31,13 @@ header, main, footer {
     max-height: 1000px;
 }
 
+.bg-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: inherit;
+    position: relative;
+}
+
 .danger {
     color: #f44336!important;
 }
@@ -54,6 +61,21 @@ header, main, footer {
 
 .parallax-container {
     position: relative;
+}
+
+.parallax-container {
+    height: 300px;
+
+    & img {
+        width: 1000px;
+    }
+
+    & h1 {
+        font-weight: bolder;
+        color: #fff;
+        text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.6);
+    }
+
 }
 
 .parallax-title__container {
@@ -344,7 +366,7 @@ nav {
 // SECTION: Friends.
 // ===============================
 
-#friends-page .parallax-container {
+.parallax-container {
     height: 300px;
 
     & img {
@@ -368,6 +390,7 @@ nav {
     width: 100%;
     min-height: 0;
     height: auto;
+    padding-bottom: 20px;
 
     & .mdl-card__header-bg {
         background-image: url('card-picture-1');
@@ -392,6 +415,50 @@ nav {
         left: 50%;
         margin-left: -30px;
         bottom: -30px;
+    }
+
+    & .mdl-card__bottom {
+        text-align: center;
+    }
+
+    & .mdl-card__bottom .btn {
+        font-size: 10px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 1rem;
+    }
+}
+
+
+
+.parallax-perfil__container {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    & .info-name,
+    & .info-email,
+    & .info-status {
+        margin: 5px 0 0 0;
+    }
+
+    & .info-name,
+    & .info-email {
+        color: #fff;
+    }
+
+    & .info-name {
+        font-weight: bold;
+    }
+
+    & .info-email {
+        font-weight: 300;
+        font-size: 17px;
+    }
+
+    & .online {
+        color: #7cb342;
     }
 }
 
