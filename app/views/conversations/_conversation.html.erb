@@ -3,9 +3,12 @@
         <% unless participant == current_user %>
             <%= display_avatar(participant, size: 1000, type: :thumb) %>
             <span class="title"><%= participant.name %></span>
-            <p><span class="last-message-title">Ultimo mensaje: </span> <%= conversation.last_message.body %></p>
-            <p><small>Ultima actualización: <%= time_ago_in_words(conversation.last_message.updated_at) %> ago</small></p>
-            <%= link_to "Ver", user_conversation_path(current_user, conversation), class: "secondary-content btn btn-default waves-effect" %>
+            <p><span class="last-message-title">Last message: </span> <%= conversation.last_message.body %></p>
+            <p><small>Last update: <%= time_ago_in_words(conversation.last_message.updated_at) %> ago</small></p>
+            <%= link_to "Show", user_conversation_path(current_user, conversation), class: "secondary-content btn btn-default waves-effect" %>
+            <%= link_to "Delete", user_conversation_path(current_user, conversation, friend_id: participant.id),
+                method: :delete, data: { confirm: "Are you sure?" },
+                class: "btn waves-effect btn-light red darken-1" %>
         <% end %>
     <% end %>
 </li>

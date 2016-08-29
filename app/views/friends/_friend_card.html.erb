@@ -15,8 +15,10 @@
                 <%= link_to "Send request", user_friends_request_path(current_user, friend_id: friend.id),
                     action: "send_request",
                     method: :post,
-                    class: "btn waves-effect btn-light" %>
+                    class: "btn waves-effect btn-light green darken-4" %>
             <% end %>
+            <%= link_to "See Profile", user_dashboard_path(friend),
+                class: "btn waves-effect btn-light light-blue darken-4" %>
         </div>
     </div>
 </div>
