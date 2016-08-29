@@ -22,9 +22,7 @@ class User < ApplicationRecord
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
     def self.search(search)
-        where("first_name LIKE ?", "%#{search}%")
-        where("last_name LIKE ?", "%#{search}%")
-        where("email LIKE ?", "%#{search}%")
+        where("first_name LIKE ? OR last_name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
     end
 
     def name
