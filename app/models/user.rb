@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
     # Associations.
     has_many :friendships
+    has_many :posts
+    # has_many :posts_likes
     has_many :friends, -> { where( friendships: {status: 'accepted'}) }, :through => :friendships
     has_many :pending_friends, -> { where( friendships: {status: 'requested'}) },
              :through => :friendships,
