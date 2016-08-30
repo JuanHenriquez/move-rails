@@ -42,6 +42,7 @@ class FriendsController < ApplicationController
         friend = User.find(params[:friend_id])
         Friendship.delete(current_user, friend)
         flash[:danger] = "Friend deleted!"
+        redirect_to user_dashboard_path(friend)
     end
 
     private
