@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825081833) do
+ActiveRecord::Schema.define(version: 20160830062953) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -72,6 +72,30 @@ ActiveRecord::Schema.define(version: 20160825081833) do
     t.string   "message_id"
     t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+  end
+
+  create_table "post_dislikes", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.index ["post_id"], name: "index_post_dislikes_on_post_id"
+    t.index ["user_id"], name: "index_post_dislikes_on_user_id"
+  end
+
+  create_table "post_likes", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_likes_on_post_id"
+    t.index ["user_id"], name: "index_post_likes_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
