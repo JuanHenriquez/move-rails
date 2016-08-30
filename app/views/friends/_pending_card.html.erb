@@ -1,5 +1,9 @@
 <li class="collection-item avatar">
     <%= display_avatar(person, size: 1000, type: :thumb) %>
     <span class="title"><%= person.name %></span>
-    <%= link_to "Accept", user_friends_path(current_user, friend_id: person.id), method: :post, class: "btn waves-effect btn-light" %>
+    <p>
+        <b>Friends:</b> <%= person.friends.count %> <br>
+        <b>Status: </b> <%= (person.status) ? "Online" : "Offline" %>
+    </p>
+    <%= link_to "Accept", user_friends_path(current_user, friend_id: person.id), method: :post, class: "btn waves-effect btn-light secondary-content green darken-4" %>
 </li>
