@@ -16,7 +16,7 @@ class ConversationsController < ApplicationController
 
     def create
         friend = User.find(params[:friend_id])
-        conversation = current_user.send_message(friend, "Prueba", "New").conversation
+        conversation = current_user.send_message(friend, params[:message], params[:subject]).conversation
         redirect_to user_conversation_path(current_user, conversation)
     end
 
