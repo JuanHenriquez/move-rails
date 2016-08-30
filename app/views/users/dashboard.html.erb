@@ -21,15 +21,25 @@
                                 <%= status %>
                             </div>
                         </div>
+                        <% if current_user != @user %>
                         <div class="col s12 m3">
-                            <%= link_to "Unfriend", user_friends_delete_path(current_user, friend_id: @user.id),
-                                action: "destroy",
-                                method: :delete, data: { confirm: "Are you sure?" },
-                                class: "btn waves-effect btn-light red darken-1" %>
-                            <%= link_to "Send a Message", user_conversations_path(friend_id: @user.id),
-                                method: :post,
-                                class: "btn waves-effect btn-light indigo darken-4" %>
+                            <% if current_user.friends.include?(@user) %>
+                                <%= link_to "Unfriend", user_friends_delete_path(current_user, friend_id: @user.id),
+                                    action: "destroy",
+                                    method: :delete, data: { confirm: "Are you sure?" },
+                                    class: "btn waves-effect btn-light red darken-1" %>
+                            <% elsif current_user.pending_friends.include?(@user) %>
+                                <a class="btn disabled">Pending</a>
+                            <% else %>
+                                <%= link_to "Send request", user_friends_request_path(current_user, friend_id: @user.id),
+                                    action: "send_request",
+                                    method: :post,
+                                    class: "btn waves-effect btn-light green darken-4" %>
+                            <% end %>
+                            <%= link_to "Send a Message", "#modal1",
+                                class: "btn waves-effect btn-light indigo darken-4 modal-trigger" %>
                         </div>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -37,4 +47,30 @@
 
     </div>
 
+</div>
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <%= form_tag user_conversations_path(friend_id: @user.id),method: :post do %>
+        <div class="modal-content">
+            <h4>New message for <%= @user.name %></h4>
+            <div class="container">
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <%= label_tag :subject, "Subject:" %>
+                            <%= text_field_tag :subject %>
+                        </div>
+                        <div class="col s12 input-field">
+                            <%= label_tag :message, "Write a message: " %>
+                            <%= text_area_tag :message, nil, class: "materialize-textarea" %>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <%= submit_tag "Send Message", class: "modal-action waves-effect waves-green btn-flat" %>
+            <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    <% end %>
 </div>
