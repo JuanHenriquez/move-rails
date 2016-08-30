@@ -6,15 +6,18 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+    # POST /resource/sign_in
+    def create
+        user = User.find_by_email(params[:user][:email])
+        user.update(status: true)
+        super
+    end
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+    # DELETE /resource/sign_out
+    def destroy
+        current_user.update(status: false)
+        super
+    end
 
   # protected
 
