@@ -2,17 +2,31 @@
 
         <div class="row">
 
+            <% if @friend != current_user %>
             <div class="col s12 m6 offset-m3 l5 push-l7">
-                <div id="friend-container">
-                    <div class="mdl-card mdl-shadow--2dp" id="friend-card">
-                        <div class="mdl-card__header-bg">
-                            <%= display_avatar(@friend, size: 1000, type: :large) %>
-                        </div>
-                        <h5 class="center-align"><%= @friend.name %></h5>
-                        <%= link_to "#{@friend.first_name}'s profile", user_path(@friend),  class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+                <div class="mdl-card friend-card mdl-shadow--2dp">
+                    <div class="mdl-card__header-bg">
+                        <h4><%= @friend.name %></h4>
+                        <%= display_avatar(@friend, size: 1000, type: :large) %>
+                    </div>
+                    <div class="mdl-card__bottom">
+                        <% if current_user.friends.include?(@friend) %>
+                            <%= link_to "Unfriend", user_friends_delete_path(current_user, friend_id: @friend.id),
+                                action: "destroy",
+                                method: :delete, data: { confirm: "Are you sure?" },
+                                class: "btn waves-effect btn-light" %>
+                        <% else %>
+                            <%= link_to "Send request", user_friends_request_path(current_user, friend_id: @friend.id),
+                                action: "send_request",
+                                method: :post,
+                                class: "btn waves-effect btn-light green darken-4" %>
+                        <% end %>
+                        <%= link_to "See Profile", user_dashboard_path(@friend),
+                            class: "btn waves-effect btn-light light-blue darken-4" %>
                     </div>
                 </div>
             </div>
+            <% end %>
 
             <div class="col s12 l7 pull-l5">
                 <div class="row scrollspy">
