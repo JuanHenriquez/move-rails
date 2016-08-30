@@ -26,6 +26,19 @@ header, main, footer {
     padding-left: 300px;
 }
 
+.alert.alert-dismissible {
+    position: absolute;
+    margin-top: 20px;
+    width: 100%;
+    z-index: 1000000000;
+}
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+    color: #3c763d;
+}
+
 .avatar-pic {
     max-width: 100px;
     max-height: 1000px;
@@ -35,6 +48,18 @@ header, main, footer {
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: inherit;
+    position: relative;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.col-relative {
+    position: relative;
+}
+
+.container-relative {
     position: relative;
 }
 
@@ -280,6 +305,20 @@ nav {
     & .collection .collection-item.avatar .secondary-content {
         top: 50%;
         margin-top: -18px;
+    }
+
+    & .mdl-card .mdl-card__header-bg .avatar-pic{
+        width: 80px;
+        height: 80px;
+        margin-left: -40px;
+        bottom: -40px;
+    }
+
+    & .mdl-card__bottom .btn, .friend-card .mdl-card__bottom .btn-large {
+        font-size: 1rem;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 2rem;
     }
 }
 
