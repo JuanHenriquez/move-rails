@@ -3,7 +3,7 @@ class User < ApplicationRecord
     # Associations.
     has_many :friendships
     has_many :posts
-    # has_many :posts_likes
+    has_many :photos
     has_many :friends, -> { where( friendships: {status: 'accepted'}) }, :through => :friendships
     has_many :pending_friends, -> { where( friendships: {status: 'requested'}) },
              :through => :friendships,
@@ -11,6 +11,8 @@ class User < ApplicationRecord
     has_many :requested_friends, -> { where( friendships: {status: 'pending'}) },
              :through => :friendships,
              :source => :friend
+
+    belongs_to :group
 
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
