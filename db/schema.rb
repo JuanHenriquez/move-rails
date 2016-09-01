@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830062953) do
+ActiveRecord::Schema.define(version: 20160901082508) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,6 +19,41 @@ ActiveRecord::Schema.define(version: 20160830062953) do
     t.datetime "accepted_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "group_admins", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_admins_on_group_id"
+    t.index ["user_id"], name: "index_group_admins_on_user_id"
+  end
+
+  create_table "group_members", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_members_on_group_id"
+    t.index ["user_id"], name: "index_group_members_on_user_id"
+  end
+
+  create_table "group_posts", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_posts_on_group_id"
+    t.index ["user_id"], name: "index_group_posts_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "privacy"
+    t.string "bg_picture"
+    t.string "info_text"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
@@ -72,6 +107,47 @@ ActiveRecord::Schema.define(version: 20160830062953) do
     t.string   "message_id"
     t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+  end
+
+  create_table "photo_comments", force: :cascade do |t|
+    t.integer "photo_id"
+    t.integer "user_id"
+    t.text    "text"
+    t.index ["photo_id"], name: "index_photo_comments_on_photo_id"
+    t.index ["user_id"], name: "index_photo_comments_on_user_id"
+  end
+
+  create_table "photo_dislikes", force: :cascade do |t|
+    t.integer "photo_id"
+    t.integer "user_id"
+    t.index ["photo_id"], name: "index_photo_dislikes_on_photo_id"
+    t.index ["user_id"], name: "index_photo_dislikes_on_user_id"
+  end
+
+  create_table "photo_likes", force: :cascade do |t|
+    t.integer "photo_id"
+    t.integer "user_id"
+    t.index ["photo_id"], name: "index_photo_likes_on_photo_id"
+    t.index ["user_id"], name: "index_photo_likes_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "text"
+    t.string   "picture"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.index ["user_id"], name: "index_photos_on_user_id"
+  end
+
+  create_table "post_comments", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.text    "text"
+    t.index ["post_id"], name: "index_post_comments_on_post_id"
+    t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
 
   create_table "post_dislikes", force: :cascade do |t|
