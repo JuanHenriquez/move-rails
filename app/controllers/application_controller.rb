@@ -29,7 +29,8 @@ class ApplicationController < ActionController::Base
     end
 
     def set_user
-        @user = User.find(params[:id])
+        user_id = params[:user_id] || params[:id]
+        @user = User.find(user_id)
     end
 
     def user_owner
