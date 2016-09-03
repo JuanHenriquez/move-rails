@@ -12,7 +12,7 @@ class User < ApplicationRecord
              :through => :friendships,
              :source => :friend
 
-    belongs_to :group
+    belongs_to :group, optional: true
 
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
