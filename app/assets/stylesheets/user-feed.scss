@@ -206,7 +206,7 @@ nav {
 }
 
 // Main content of the feed page.
-.feed-body {
+.feed-body, #dashboard-page {
 
     .post-header {
         padding: 5px 10px;
@@ -228,6 +228,12 @@ nav {
 
         h6 { font-size: 0.7em; }
 
+    }
+
+    .social-actions { flex-grow: 2;  text-align: right; }
+    
+    .social-actions a.btn-floating i {
+        color: #212121!important;
     }
 
 }
@@ -283,6 +289,23 @@ nav {
 
 .input-field__text em {
     color: #757575;
+}
+
+// ===============================
+// SECTION: Dashboard
+// ===============================
+
+#dashboard-tabs {
+    background-color: #212121;
+    margin-bottom: 20px;
+
+    & .tab a {
+        color: #fff;
+    }
+
+    & .indicator {
+        background-color: #E91E63;
+    }
 }
 
 // ===============================
