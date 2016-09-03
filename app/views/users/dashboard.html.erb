@@ -47,6 +47,31 @@
 
     </div>
 
+    <ul class="tabs" id="dashboard-tabs">
+        <li class="tab col s3">
+            <a href="#posts" class="active waves-effect">Posts</a>
+        </li>
+        <li class="tab col s3">
+            <a href="#photos" class="waves-effect">Photos</a>
+        </li>
+        <li class="tab col s3">
+            <a href="#groups" class="waves-effect">Groups</a>
+        </li>
+    </ul>
+
+    <div class="container">
+        <div id="posts" class="col s12">
+            <div class="row">
+                <%= render partial: 'users/partials/post_card', collection: @posts, as: :post %>
+            </div>
+        </div>
+        <div id="photos" class="col s12">
+
+        </div>
+        <div id="groups" class="col s12">
+
+        </div>
+    </div>
 </div>
 
 
