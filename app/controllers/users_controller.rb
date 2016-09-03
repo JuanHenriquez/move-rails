@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     # GET - Show a user.
     def dashboard
         @user = User.find(params[:user_id])
+        @posts = Post.where(:user_id => @user.id).order(created_at: :desc)
     end
 
     def show
