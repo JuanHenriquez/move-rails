@@ -1,0 +1,24 @@
+<div class="col s12 m8 offset-m2">
+    <div class="card post">
+        <div class="post-header">
+            <%= display_avatar(@user, size: 1000, type: :large) %>
+            <div class="post-info">
+                <h5><strong><%= @user.first_name %></strong></h5>
+                <small>Last update: <%= time_ago_in_words(post.updated_at) %> ago</small></small>
+            </div>
+            <div class="social-actions">
+                <%= post.likes.count %>
+                <%= link_to(user_post_likes_path(post_id: post.id), method: :post, class: "btn-floating btn-flat waves-effect") do %>
+                    <i class="material-icons">favorite</i>
+                <% end %>
+                <%= post.dislikes.count %>
+                <%= link_to(user_post_dislikes_path(post_id: post.id), method: :post, class: "btn-floating btn-flat waves-effect") do %>
+                    <i class="material-icons">thumb_down</i>
+                <% end %>
+            </div>
+        </div>
+        <div class="card-content">
+            <p><%= post.text %></p>
+        </div>
+    </div>
+</div>
