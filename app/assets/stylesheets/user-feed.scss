@@ -73,6 +73,23 @@ header, main, footer {
     background-color: #f44336!important;
 }
 
+
+.form-color .input-field input {
+    border-bottom-color: #000 !important;
+}
+
+.form-color .input-field label {
+    color: #000 !important;
+}
+
+#file-image-title {
+    position: absolute;
+    bottom: 55px;
+}
+.file-field .btn-floating.btn-large {
+    height: 55.5px;
+}
+
 .mdl-card__padding {
     padding: 16px;
     display: flex;
@@ -114,6 +131,34 @@ header, main, footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.post-comments-container .collection { margin: 0; overflow: visible; border: 0;}
+.post-comments-container .collection-item {
+    border-style: solid;
+    border-color: #e0e0e0;
+    border-width: 1px 0 1px;
+}
+
+.post-comments-container {
+
+    & .post-comment .input-field {
+        margin-top: 10px;
+    }
+
+    & .collection-item.avatar {
+        min-height: 60px;
+    }
+
+    & .collection .mdl-menu li a {
+        display: block;
+    }
+
+    & .btn-comment {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
 }
 
 // =========================
@@ -208,6 +253,10 @@ nav {
 // Main content of the feed page.
 .feed-body, #dashboard-page {
 
+    #list-info {
+        width: 100%;
+    }
+
     .post-header {
         padding: 5px 10px;
         display: flex;
@@ -231,7 +280,7 @@ nav {
     }
 
     .social-actions { flex-grow: 2;  text-align: right; }
-    
+
     .social-actions a.btn-floating i {
         color: #212121!important;
     }
@@ -249,22 +298,6 @@ nav {
     & #edit-form {
         width: 70%;
         margin: 0 auto;
-    }
-
-    & #edit-form .input-field input {
-        border-bottom-color: #000;
-    }
-
-    & #edit-form .input-field label {
-        color: #000;
-    }
-
-    & #file-image-title {
-        position: absolute;
-        bottom: 55px;
-    }
-    & .file-field .btn-floating.btn-large {
-        height: 55.5px;
     }
 }
 

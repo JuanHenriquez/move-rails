@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require material
 //= require materialize-sprockets
 //= require bootstrap-sprockets
-//= require material
-//= require vue/dist/vue.min
 //= require turbolinks
 //= require_tree .
 

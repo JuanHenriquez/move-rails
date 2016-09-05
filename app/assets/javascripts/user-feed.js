@@ -1,8 +1,8 @@
 //= require jquery
 //= require jquery_ujs
+//= require material
 //= require materialize-sprockets
 //= require bootstrap-sprockets
-//= material
 //= require turbolinks
 
 $(document).on('turbolinks:load', function (){
