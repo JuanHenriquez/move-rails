@@ -12,9 +12,9 @@
         </div>
     </li>
     <li>
-        <%= link_to(user_path(current_user), class: "waves-effect") do %>
-            <i class="material-icons">cloud</i>
-            Feed
+        <%= link_to(user_dashboard_path(current_user), class: "waves-effect") do %>
+            <i class="material-icons">dashboard</i>
+            Dashboard
         <% end %>
     </li>
     <li class="no-padding">
@@ -41,12 +41,6 @@
         </ul>
     </li>
     <li>
-        <%= link_to(user_dashboard_path(current_user), class: "waves-effect") do %>
-            <i class="material-icons">dashboard</i>
-            Dashboard
-        <% end %>
-    </li>
-    <li>
         <%= link_to(user_conversations_path(current_user), class: "waves-effect") do %>
             <i class="material-icons">message</i>
             Conversations
@@ -69,12 +63,6 @@
                 </div>
             </li>
         </ul>
-    </li>
-    <li>
-        <a href="#!" class="waves-effect">
-            <i class="material-icons">pages</i>
-            My Pages
-        </a>
     </li>
     <li>
         <div class="divider"></div>
