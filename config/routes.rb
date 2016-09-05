@@ -11,10 +11,18 @@ Rails.application.routes.draw do
 
         resources :friends, :except => ['destroy']
         resources :posts, :only => ['create', 'edit', 'update', 'destroy']
+        resources :photos, :only => ['create', 'edit', 'update', 'destroy']
 
         scope module: 'posts' do
             resources :post_likes, :only => ['create']
             resources :post_dislikes, :only => ['create']
+            resources :post_comments, :only => ['create', 'update', 'destroy']
+        end
+
+        scope module: 'photos' do
+            resources :photo_likes, :only => ['create']
+            resources :photo_dislikes, :only => ['create']
+            resources :photo_comments, :only => ['create', 'update', 'destroy']
         end
 
         delete "friends", to: "friends#destroy", as: "friends_delete"
