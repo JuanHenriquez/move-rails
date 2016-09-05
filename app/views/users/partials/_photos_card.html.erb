@@ -1,0 +1,110 @@
+<div class="col s12 m8 offset-m2">
+    <div class="card post">
+        <div class="post-header">
+            <%= display_avatar(@user, size: 1000, type: :large) %>
+            <div class="post-info">
+                <h5><strong><%= @user.first_name %></strong></h5>
+                <small>Last update: <%= time_ago_in_words(photo.picture_updated_at) %> ago</small></small>
+            </div>
+            <div class="social-actions">
+                <%= photo.likes.count %>
+                <%= link_to(user_photo_likes_path(photo_id: photo.id), method: :post, class: "btn-floating btn-flat waves-effect") do %>
+                    <i class="material-icons">favorite</i>
+                <% end %>
+                <%= photo.dislikes.count %>
+                <%= link_to(user_photo_dislikes_path(photo_id: photo.id), method: :post, class: "btn-floating btn-flat waves-effect") do %>
+                    <i class="material-icons">thumb_down</i>
+                <% end %>
+
+                <% if current_user == photo.user %>
+                <!-- Button for posts acitions -->
+                <a id='photo-action-<%= "#{photo.id}" %>' class="secondary-content mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">more_vert</i>
+                </a>
+                <% end %>
+
+
+                <!-- Post actions container -->
+                <% if current_user == photo.user %>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    for='photo-action-<%= "#{photo.id}" %>'>
+                    <li class="mdl-menu__item">
+                        <%= link_to "Delete", user_photo_path(id: photo.id), method: :delete, data: { confirm: "Are you sure?"}%>
+                    </li>
+                    <li class="mdl-menu__item">
+                        <a href='#modal-photo-<%= "#{photo.id}" %>' class="modal-trigger">Edit</a>
+                    </li>
+                </ul>
+
+                <%= render 'users/partials/edit_modal_photo', obj: photo %>
+                <% end %>
+
+            </div>
+        </div>
+        <div class="card-image">
+            <%= image_tag(photo.picture.url(:large)) %>
+        </div>
+        <div class="card-content">
+            <p><%= photo.text %></p>
+        </div>
+
+        <!-- Container for post comments -->
+        <div class="post-comments-container">
+            <!-- If this posts have comments then -->
+            <% if photo.comments.count > 0 %>
+            <ul class="collection">
+                <!-- Iterate through every comment for this post -->
+                <% photo.comments.each do | comment | %>
+                <li class="collection-item avatar">
+                    <%= display_avatar(comment.user, size: 1000, type: :large) %>
+                    <span class="title"><small>Last update: <%= time_ago_in_words(comment.updated_at) %> ago</small></span>
+                    <p><%= comment.text %></p>
+
+                    <% if current_user == comment.user %>
+                    <!-- Button for comment acitions -->
+                    <a id='photo-comment-action-<%= "#{comment.id}" %>' class="secondary-content mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">more_vert</i>
+                    </a>
+                    <% end %>
+                </li>
+
+                <!-- Comments actions container -->
+                <% if current_user == comment.user %>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    for='photo-comment-action-<%= "#{comment.id}" %>'>
+                    <li class="mdl-menu__item">
+                        <%= link_to "Delete", user_photo_comment_path(id: comment.id), method: :delete, data: { confirm: "Are you sure?"}%>
+                    </li>
+                    <li class="mdl-menu__item">
+                        <a href='#modal-comment-<%= "#{comment.id}" %>' class="modal-trigger">Edit</a>
+                    </li>
+                </ul>
+                <% end %>
+
+                <!-- / .mdl-menu(comment action container) -->
+                <%= render 'users/partials/edit_comment_photo_modal', obj: comment %>
+                <% end %>
+                <!-- End iteration for comments -->
+
+            </ul>
+            <% end %>
+
+            <!-- Form comment container-->
+            <div class="post-comment container">
+                <%= form_tag user_photo_comments_path(photo_id: photo.id), method: :post do %>
+                    <div class="row form-color">
+                        <div class="col s8 input-field">
+                            <%= text_field_tag :text, nil,placeholder: "Write a comment"%>
+                        </div>
+                        <div class="col s4 input-field">
+                            <%= submit_tag "Send", class: "waves-effect waves-green btn btn-comment" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <!-- / .post-comment -->
+
+        </div>
+        <!-- / .post-comments-container -->
+    </div>
+</div>
