@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     def dashboard
         @user = User.find(params[:user_id])
         @posts = Post.where(:user_id => @user.id).order(created_at: :desc)
+        @photos = Photo.where(:user_id => @user.id).order(picture_updated_at: :desc)
     end
 
     def show
