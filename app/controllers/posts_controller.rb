@@ -18,16 +18,25 @@ class PostsController < ApplicationController
         end
     end
 
-    # GET /users/:user_id/posts/:id/edit
-    def edit
-    end
-
     # PUT /users/:user_id/posts/:id
     def update
+        post = Post.find(params[:id])
+        if post.update(user_id: current_user.id, text: params[:text])
+            flash[:success] = "Post update!"
+            redirect_to(:back)
+        else
+            flash[:danger] = "Sorry, something is wrong."
+            redirect_to(:back)
+        end
     end
 
     # DELETE /users/:user_id/posts/:id
     def destroy
+
+        post = Post.find(params[:id])
+        post.destroy!
+        flash[:danger] = "Post deleted."
+        redirect_to(:back)
 
     end
 
