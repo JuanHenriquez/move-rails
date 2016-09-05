@@ -1,4 +1,4 @@
-class PhotoComment < ApplicationRecord
+class Photo::PhotoComment < ApplicationRecord
 
     self.table_name = "photo_comments"
     belongs_to :photo

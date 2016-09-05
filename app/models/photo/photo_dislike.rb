@@ -1,4 +1,4 @@
-class PhotoDislike < ApplicationRecord
+class Photo::PhotoDislike < ApplicationRecord
 
     self.table_name = "photo_dislikes"
     belongs_to :photo
