@@ -1,0 +1,28 @@
+<!-- Modal Structure -->
+<div id='modal-photo-<%= "#{obj.id}" %>' class="modal">
+    <%= form_tag user_photo_path(user_id: obj.user.id, id: obj.id), method: :put do %>
+    <div class="modal-content">
+        <h4>Edit Post</h4>
+        <div class="row form-color">
+            <div class="file-field input-field">
+                <div class="btn btn-floating waves-effect btn-large">
+                    <span><i class="material-icons">file_upload</i></span>
+                    <%= file_field_tag :picture, value: obj.picture%>
+                </div>
+                <div class="file-path-wrapper">
+                    <span id="file-image-title">Upload photo</span>
+                    <input class="file-path validate" type="text" placeholder="Upload photo">
+                </div>
+            </div>
+            <div class="col s12 input-field">
+                <%= label_tag :text, "Write the post content" %>
+                <%= text_field_tag :text, nil, placeholder: "Write a comment", value: obj.text%>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <%= submit_tag "Edit Comment", class: "modal-action modal-close waves-effect waves-green btn-flat" %>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+    <% end %>
+</div>
