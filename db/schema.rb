@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901082508) do
+ActiveRecord::Schema.define(version: 20160905172017) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -110,9 +110,11 @@ ActiveRecord::Schema.define(version: 20160901082508) do
   end
 
   create_table "photo_comments", force: :cascade do |t|
-    t.integer "photo_id"
-    t.integer "user_id"
-    t.text    "text"
+    t.integer  "photo_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.datetime "updated_at"
+    t.datetime "created_at"
     t.index ["photo_id"], name: "index_photo_comments_on_photo_id"
     t.index ["user_id"], name: "index_photo_comments_on_user_id"
   end
@@ -143,9 +145,11 @@ ActiveRecord::Schema.define(version: 20160901082508) do
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "user_id"
-    t.text    "text"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["post_id"], name: "index_post_comments_on_post_id"
     t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
