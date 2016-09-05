@@ -15,10 +15,93 @@
                 <%= link_to(user_post_dislikes_path(post_id: post.id), method: :post, class: "btn-floating btn-flat waves-effect") do %>
                     <i class="material-icons">thumb_down</i>
                 <% end %>
+
+                <% if current_user == post.user %>
+                <!-- Button for posts acitions -->
+                <a id='post-action-<%= "#{post.id}" %>' class="secondary-content mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">more_vert</i>
+                </a>
+                <% end %>
+
+
+                <!-- Post actions container -->
+                <% if current_user == post.user %>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    for='post-action-<%= "#{post.id}" %>'>
+                    <li class="mdl-menu__item">
+                        <%= link_to "Delete", user_post_path(id: post.id), method: :delete, data: { confirm: "Are you sure?"}%>
+                    </li>
+                    <li class="mdl-menu__item">
+                        <a href='#modal-<%= "#{post.id}" %>' class="modal-trigger">Edit</a>
+                    </li>
+                </ul>
+
+                <%= render 'users/partials/edit_modal', obj: post %>
+                <% end %>
+
             </div>
         </div>
         <div class="card-content">
             <p><%= post.text %></p>
         </div>
+
+        <!-- Container for post comments -->
+        <div class="post-comments-container">
+            <!-- If this posts have comments then -->
+            <% if post.comments.count > 0 %>
+            <ul class="collection">
+                <!-- Iterate through every comment for this post -->
+                <% post.comments.each do | comment | %>
+                <li class="collection-item avatar">
+                    <%= display_avatar(comment.user, size: 1000, type: :large) %>
+                    <span class="title"><small>Last update: <%= time_ago_in_words(comment.updated_at) %> ago</small></span>
+                    <p><%= comment.text %></p>
+
+                    <% if current_user == comment.user %>
+                    <!-- Button for comment acitions -->
+                    <a id='post-comment-action-<%= "#{comment.id}" %>' class="secondary-content mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">more_vert</i>
+                    </a>
+                    <% end %>
+                </li>
+
+                <!-- Comments actions container -->
+                <% if current_user == comment.user %>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    for='post-comment-action-<%= "#{comment.id}" %>'>
+                    <li class="mdl-menu__item">
+                        <%= link_to "Delete", user_post_comment_path(id: comment.id), method: :delete, data: { confirm: "Are you sure?"}%>
+                    </li>
+                    <li class="mdl-menu__item">
+                        <a href='#modal-comment-<%= "#{comment.id}" %>' class="modal-trigger">Edit</a>
+                    </li>
+                </ul>
+                <% end %>
+
+                <!-- / .mdl-menu(comment action container) -->
+                <%= render 'users/partials/edit_comment_modal', obj: comment %>
+                <% end %>
+                <!-- End iteration for comments -->
+
+            </ul>
+            <% end %>
+
+            <!-- Form comment container-->
+            <div class="post-comment container">
+                <%= form_tag user_post_comments_path(post_id: post.id), method: :post do %>
+                    <div class="row form-color">
+                        <div class="col s8 input-field">
+                            <%= text_field_tag :text, nil,placeholder: "Write a comment"%>
+                        </div>
+                        <div class="col s4 input-field">
+                            <%= submit_tag "Send", class: "waves-effect waves-green btn btn-comment" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <!-- / .post-comment -->
+
+        </div>
+        <!-- / .post-comments-container -->
     </div>
 </div>
