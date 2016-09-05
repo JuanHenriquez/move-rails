@@ -1,0 +1,18 @@
+<!-- Modal Structure -->
+<div id='modal-comment-<%= "#{obj.id}" %>' class="modal">
+    <%= form_tag user_photo_comment_path(id: obj.id, user_id: obj.user.id, photo_id: obj.photo.id), method: :put do %>
+    <div class="modal-content">
+        <h4>Edit Comment</h4>
+        <div class="row form-color">
+            <div class="col s12 input-field">
+                <%= label_tag :text, "Write comment" %>
+                <%= text_field_tag :text, nil, placeholder: "Write a comment", value: obj.text%>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <%= submit_tag "Edit Comment", class: "modal-action modal-close waves-effect waves-green btn-flat" %>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+    <% end %>
+</div>
