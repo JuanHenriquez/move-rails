@@ -1,10 +1,30 @@
 <!-- Modal Structure -->
 <div id="modal-photo" class="modal">
-    <div class="modal-content">
-        <h4>Modal Photo</h4>
-        <p>A bunch of text</p>
+    <%= form_tag user_photos_path(current_user), method: :post, multipart: true do %>
+    <div class="modal-content form-color">
+        <h4>Upload Photo</h4>
+        <div class="row">
+            <div class="file-field input-field">
+                <div class="btn btn-floating waves-effect btn-large">
+                    <span><i class="material-icons">file_upload</i></span>
+                    <%= file_field_tag :picture %>
+                </div>
+                <div class="file-path-wrapper">
+                    <span id="file-image-title">Upload photo</span>
+                    <input class="file-path validate" type="text" placeholder="Upload photo">
+                </div>
+            </div>
+
+            <div class="col s12 input-field">
+                <%= label_tag :text, "Write a something: " %>
+                <%= text_area_tag :text, nil, class: "materialize-textarea" %>
+            </div>
+
+        </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <%= submit_tag "Create Post", class: "modal-action modal-close waves-effect waves-green btn-flat" %>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
     </div>
+    <% end %>
 </div>
