@@ -1,16 +1,16 @@
 class User < ApplicationRecord
 
     # Associations.
-    has_many :friendships
-    has_many :posts
-    has_many :photos
-    has_many :friends, -> { where( friendships: {status: 'accepted'}) }, :through => :friendships
+    has_many :friendships, dependent: :destroy
+    has_many :posts, dependent: :destroy
+    has_many :photos, dependent: :destroy
+    has_many :friends, -> { where( friendships: {status: 'accepted'}) }, :through => :friendships, dependent: :destroy
     has_many :pending_friends, -> { where( friendships: {status: 'requested'}) },
              :through => :friendships,
-             :source => :friend
+             :source => :friend, dependent: :destroy
     has_many :requested_friends, -> { where( friendships: {status: 'pending'}) },
              :through => :friendships,
-             :source => :friend
+             :source => :friend, dependent: :destroy
 
     belongs_to :group, optional: true
 
