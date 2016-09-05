@@ -52,24 +52,36 @@
             <a href="#posts" class="active waves-effect">Posts</a>
         </li>
         <li class="tab col s3">
-            <a href="#photos" class="waves-effect">Photos</a>
+            <a href="#photos" class="active waves-effect">Photos</a>
         </li>
         <li class="tab col s3">
-            <a href="#groups" class="waves-effect">Groups</a>
+            <a href="#info" class="waves-effect">Info</a>
         </li>
     </ul>
 
     <div class="container">
         <div id="posts" class="col s12">
             <div class="row">
-                <%= render partial: 'users/partials/post_card', collection: @posts, as: :post %>
+                <% if @posts.count > 0 %>
+                    <%= render partial: 'users/partials/post_card', collection: @posts, as: :post %>
+                <% else %>
+                    <h4 class="center-align">You don't have posts</h4>
+                <% end %>
             </div>
         </div>
+
         <div id="photos" class="col s12">
-
+            <div class="row">
+                <% if @photos.count > 0 %>
+                    <%= render partial: 'users/partials/photos_card', collection: @photos, as: :photo %>
+                <% else %>
+                    <h4 class="center-align">You don't have photos</h4>
+                <% end %>
+            </div>
         </div>
-        <div id="groups" class="col s12">
 
+        <div id="info" class="col s12">
+            <%= render 'users/partials/info_card', obj: @user %>
         </div>
     </div>
 </div>
@@ -78,7 +90,7 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
     <%= form_tag user_conversations_path(friend_id: @user.id),method: :post do %>
-        <div class="modal-content">
+        <div class="modal-content form-color">
             <h4>New message for <%= @user.name %></h4>
             <div class="container">
                     <div class="row">
