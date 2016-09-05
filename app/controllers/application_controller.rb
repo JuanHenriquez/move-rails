@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     def user_owner
         if current_user != @user
             flash[:danger] = "You don't have permissions to do that."
-            redirect_to user_dashboard_path(current_user)
+            redirect_to(:back)
         end
     end
 
